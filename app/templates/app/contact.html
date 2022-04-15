@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container-fluid" id="contact">
+  <div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.tags}} alert-dismissible fade show text-center"  role="alert">
+        <strong>{{message}}</strong>
+        {% comment %} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div> {% endcomment %}
+    {% endfor %}
+    {% endif %}
+
+  </div>
+  <div class="row">
+    <div class="heading">
+      <h1 class="text-center my-4 text-white">Come in Touch with us</h1>
+    </div>
+    <div class="col-md-5 mt-5">
+      <form method="POST">
+        {% csrf_token %}
+        <div id="inputs">
+          <input type="text" name="name" id="name" class="form-control text-white" placeholder="Enter your name" required>
+          <input type="email" name="email" id="email" class="form-control text-white" placeholder="Enter your email" required>
+          <input type="number" name="phone" id="phone" class="form-control text-white"
+            placeholder="Enter your phone number">
+          <textarea name="message" id="message" placeholder="Write your feedback" cols="81" rows="3"
+            class="text-white ms-4" required></textarea>
+          <!-- <input type="text" name="date" id="date" class="form-control text-white text-white" placeholder="dd/mm/yyyy"> -->
+        </div>
+        <input type="submit" value="Add feedback" class="btn btn-danger mt-4 ms-4">
+      </form>
+    </div>
+    
+    <div class="col-md-5 mt-5 offset-2 m-auto">
+      <iframe class="mt-3" style="border-radius: 15px;"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.2057430801656!2d72.84945531469783!3d19.09862798707498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c84cb514c175%3A0x56bd843df0e5b97b!2sM.L.%20Dahanukar%20College%20of%20Commerce!5e0!3m2!1sen!2sin!4v1645646457703!5m2!1sen!2sin"
+        width="450" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

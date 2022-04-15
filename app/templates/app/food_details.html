@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-6 text-center align-self-center">
+            <img src="{{food.food_image.url}}" alt="" class="img-fluid img-thumbnail"> 
+        </div>
+        <div class="col-sm-5 offset-sm-1">
+            <h2>Iteam name :  {{food.title}}</h2>
+            <hr>
+            <p>{{food.descriptions}}</p>
+            <h4> ₹ {{food.actual_price}}</h4>
+            <h5>Available Offer</h5>
+            <ul>
+                <li>Special offer Get extra ₹3000 off</li>
+                <li>No cost EMI ₹1,560/month. Standard EMI also available</li>
+                <li>Get 30% discounts on meals</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock main %}

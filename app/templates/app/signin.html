@@ -1,0 +1,26 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+<div class="container-fluid" id="signin">
+
+    <div class="row mt-5">
+
+        <div class="card mt-5">
+            <div class="heading">
+                <h1 class="text-center my-4 text-white">Sign-In</h1>
+            </div>
+            {% include 'app/mess.html' %}
+            <form action="{% url 'signin' %}" method="POST">
+                {% csrf_token %}
+                <div class="inner-card">
+                    <input type="text" name="username" placeholder="username" id="username" class="form-control ms-0">
+                    <input type="password" name="pass1" placeholder="Password" id="pass1" class="form-control ms-0">
+                    <input type="submit" value="SignIn" class="btn btn-primary ms-0">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    {% endblock main %}

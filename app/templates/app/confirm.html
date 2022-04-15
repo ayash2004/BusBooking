@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row my-5">
+        <div class="heading">
+            <h1 class="alert alert-danger text-center">Confirm tickets and pay</h1>
+        </div>
+        <div class="col-md-6 shadow">
+            <img src="{% static 'app/img/s1.jpg' %}" alt="">
+        </div>
+        <div class="col-md-6 shadow">
+            
+            {% for ticket in tickets%}
+                
+                {%if ticket.id == userid%}
+                    <p>Full Name : {{ticket.full_name}}</p>
+                    <p>Number of pessangers : {{ticket.quantity}}</p>
+                    <p>Source : {{ticket.source}}</p>
+                    <p>Destination: {{ticket.destination}}</p>
+                    <p>Bookings for date: {{ticket.booking_date}}</p>
+                    <p>Total Cost: 5.0$</p>
+                {%endif%}
+            {%endfor%}
+
+            <!-- <input type="submit"  value="paypal"  class="btn btn-warning" href="{% url 'paypal' %}"> -->
+            <a class="btn btn-warning" href="{% url 'paypal' %}">Paypal</a> 
+            
+
+            
+           
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

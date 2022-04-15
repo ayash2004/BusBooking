@@ -1,0 +1,186 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container-fluid" id="hello">
+  <div id="banner-title">
+    <h1 style="font-size: 1.5rem; color: #fff;">Welcome to our travels</h1>
+  <h1 style="font-size: 5.5rem; color: #fff;">Get exclusive deals</h1>
+  </div>
+</div>
+
+
+<!-- Offers Sections  -->
+<!-- <div class="container my-3" id="offer">
+  <div class="row"> -->
+      <!-- <div class="heading">
+        <h1 class="text-center">
+          Special <span class="text-primary">Offers</span>
+        </h1>
+        <hr class="m-auto d-block w-30">
+      </div>
+
+      {% for off in offers %}
+      <div class="col-md-4 my-5">
+        <div class="card  m-auto p-0 shadow" style="width: 18rem;">
+          <img src="{{off.offer_image.url}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" style="color: #000; font-size:1.5rem">Place: {{off.title}}</h5>
+            <p class="card-text" style="color: #000;">Discount Price: ₹ {{off.discount_price}}</p>
+            <p class="card-text" style="color: #000;">Actual Price: ₹ {{off.actual_price}}</p>
+            <a href="{% url 'offer-details' off.id %}" class="btn btn-primary">Read more...</a>
+          </div>
+        </div>
+      </div> -->
+
+    <!-- {% endfor %}
+  </div>
+</div> -->
+<!--End Offers Sections  -->
+
+<!-- Services  -->
+<div class="container my-6" id="service">
+  <div class="row">
+    <div class="heading">
+      <h1 class="text-center">
+        Our <span class="text-primary">Services</span>
+      </h1>
+      <hr class="m-auto d-block w-30">
+    </div>
+    <div class="col-sm-6 m-auto shadow p-0 my-3">
+
+      <div class="details">
+        <h2 class="text-center">Ac buses</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+      </div>
+
+    </div>
+
+    <div class="col-sm-5 offset-1 m-auto">
+      <img class="img-fluid" src="{% static 'app/img/s1.jpg' %}" alt="">
+    </div>
+
+    <div class="col-sm-6 m-auto shadow p-0 my-3">
+
+      <div class="details">
+        <h2 class="text-center">Non Ac buses</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur saepe a rerum hic quae
+          reprehenderit, voluptas impedit perferendis ullam, porro sint, neque ipsa.</p>
+      </div>
+
+    </div>
+
+    <div class="col-sm-5 offset-1 m-auto">
+      <img class="img-fluid" src="{% static 'app/img/s2.jpg' %}" alt="">
+    </div>
+
+  </div>
+
+  <!-- <div class="row">
+    <div class="heading">
+      <h1 class="text-center">
+        Other <span class="text-primary">Services</span>
+      </h1>
+      <hr class="m-auto d-block w-30">
+    </div>
+  </div> -->
+</div>
+<!--End Services  -->
+
+<!-- Contact  -->
+<!-- <div class="container my-5 m-auto">
+  <div class="row">
+    <div class="heading my-4">
+      <h1 class="text-center">
+        Come in touch <span class="text-primary">with us</span>
+      </h1>
+      <hr class="m-auto d-block w-30">
+    </div>
+    <div class="col-md-5">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15082.463185956845!2d72.8476331!3d19.0806227!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5cd6e18fad49afa8!2sVakola%20Police%20Station!5e0!3m2!1sen!2sin!4v1645125768114!5m2!1sen!2sin"
+        width="450" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="col-md-5 m-auto shadow">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" class="form-control">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" class="form-control">
+        <label for="phone">Phone number:</label>
+        <input type="number" name="phone" id="phone" class="form-control">
+        <label for="message">Feedback:</label>
+        <textarea name="message" id="message" class="form-control" cols="30" rows="5"></textarea>
+        <input type="submit" value="Submit" class="btn btn-primary my-2">
+      </form>
+
+    </div>
+  </div>
+</div> -->
+
+<!-- End Contact  -->
+<!-- <div class="m-3">
+  <h2>Order Your Meals</h2>
+  <div class="owl-carousel" id="slider1">
+    {% for f in foods %}
+    <a href="{% url 'food-details' f.id %}" class="btn">
+      <div class="item"><img src="{{f.food_image.url}}" alt="" height="200px"><span
+         class="fw-bold">{{f.title}}</span><br>
+        <span class="fs-5">Price: {{f.actual_price}}</span></div>
+    </a>
+    {% endfor %}
+  </div>
+</div> -->
+
+<div class="footer-dark">
+  <footer>
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-6 col-md-3 item">
+                  <h3>Services</h3>
+                  <ul>
+                      <li><a href="#">Web design</a></li>
+                      <li><a href="#">Development</a></li>
+                      <li><a href="#">Hosting</a></li>
+                  </ul>
+              </div>
+              <div class="col-sm-6 col-md-3 item">
+                  <h3>About</h3>
+                  <ul>
+                      <li><a href="#">Company</a></li>
+                      <li><a href="#">Team</a></li>
+                      <li><a href="#">Careers</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-6 item text">
+                  <h3>Bus Booking System</h3>
+                  <a href="{% url 'contact' %}"><p>Contact US</p></a>
+                </div>
+              <div class="col item social"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div>
+          <p class="copyright">Bus Booking System</p>
+      </div>
+  </footer>
+</div>
+
+
+
+{% endblock main %}

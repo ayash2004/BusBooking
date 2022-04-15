@@ -1,0 +1,124 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+
+
+<div class="container">
+<div>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert {{message.tags}} alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        {% comment %} <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div> {% endcomment %}
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+    <div class="row my-2 py-3">
+        <div class="col-md-5 shadow p-0 my-3">
+            <div class="heading">
+                <h1 class="alert alert-info text-center">Book ur tickets here</h1>
+            </div>
+            <form action="{% url 'booking' %}" method="POST" class="mx-4 my-1">
+                {% csrf_token %}
+                <!-- {{form.as_p}} -->
+                <div class="form-group my-1">
+                    <div class="col-md-12">
+                        <label for="full_name">Full Name:</label>
+                        <input type="text" name="full_name" id="full_name" required class="form-control" placeholder="Full Name">
+                    </div>
+                </div>
+                <div class="form-group my-1">
+                    <div class="col-md-12">
+                        <label for="source">Source:</label>
+                        <select name="source" class="form-control" id="source_id">
+                            <option >Select</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Karnataka">Karnataka</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group my-1">
+                    <div class="col-md-12">
+                        <label for="destination">Destination:</label>
+                        <select name="destination" class="form-control" id="">
+                            <option value="">Select</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Karnataka">Karnataka</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group my-1">
+                    <div class="col-md-12">
+                        <label for="quantity">Quantity:</label>
+                        <select name="quantity" class="form-control" id="quantity">
+                            <option value="">Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group my-1">
+                    <div class="col-md-12">
+                        <input type="date" name="booking_date" class="form-control" placeholder="dd/mm/yy" id="booking_date">
+                    </div>
+                </div>
+                <input type="submit" value="Book ticket" class="btn btn-info my-2">
+            </form>
+        </div>
+
+        <div class="col-md-7 my-3 shadow">
+            <div class="heading">
+                <h1 class="alert alert-info text-center">Confirm your tickets</h1>
+            </div>
+
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Srno.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Source</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Bookings for date</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ticket in tickets %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{ticket.full_name}}</td>
+                        <td>{{ticket.quantity}}</td>
+                        <td>{{ticket.source}}</td>
+                        <td>{{ticket.destination}}</td>
+                        <td>{{ticket.booking_date}}</td>
+                        <td>
+                            <form action="{% url 'confirm' ticket.id %}" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" value="Confirm and Pay" class="btn btn-warning mb-1">
+                            </form>
+                            <form action="/delete_ticket/{{ticket.id}}/" method="POST">
+                                {% csrf_token %}
+                                <input type="submit" value="Delete" class="btn btn-danger">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
